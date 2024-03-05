@@ -122,7 +122,7 @@ function Landingpage() {
           </div>
         </div>
         <div className="w-full">
-          <div className="w-full flex justify-between h-0 lg:h-auto invisible lg:visible">  
+          <div className="w-full flex justify-between px-5 h-0 lg:h-auto invisible lg:visible">  
             <div className='flex'>
               <Select 
                 label="Type" 
@@ -131,7 +131,7 @@ function Landingpage() {
                 value={word}
                 options={types}
                 defaultValue='all'
-                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
+                style={{ marginTop: 4, minHeight: 40, minWidth: 120 }}
                 className="mr-5"
                 placeholder="Price"
               />
@@ -142,7 +142,7 @@ function Landingpage() {
                 value={word}
                 options={types}
                 defaultValue='all'
-                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
+                style={{ marginTop: 4, minHeight: 40, minWidth: 120 }}
                 className="mr-5"
                 placeholder="Beds&Baths"
               />
@@ -153,7 +153,7 @@ function Landingpage() {
                 value={word}
                 options={types}
                 defaultValue='all'
-                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
+                style={{ marginTop: 4, minHeight: 40, minWidth: 120 }}
                 className="mr-5"
               />
             </div>
