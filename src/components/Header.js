@@ -95,13 +95,13 @@ export default function Header() {
 const links = [
     {
         name: "Add Profile",
-        link: "/"
+        link: "/landingpage"
     }, {
         name: "Search User",
-        link: "/page2"
+        link: "/landingpage"
     }, {
         name: "Update Profile",
-        link: "/page3"
+        link: "/landingpage"
     },
     {
         name: "Landingpage",
