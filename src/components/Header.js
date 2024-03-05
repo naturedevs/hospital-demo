@@ -83,7 +83,7 @@ export default function Header() {
                         </IconButton>
                     </div>
                 </div>
-                <Collapse open={openNav}>
+                <Collapse open={openNav} className="z-[1000]">
                     <NavList/>
                 </Collapse>
             </div>
@@ -94,18 +94,14 @@ export default function Header() {
 
 const links = [
     {
-        name: "Add Profile",
-        link: "/landingpage"
+        name: "Buy",
+        link: "/buy"
     }, {
-        name: "Search User",
-        link: "/landingpage"
+        name: "Rent",
+        link: "/rent"
     }, {
-        name: "Update Profile",
-        link: "/landingpage"
-    },
-    {
-        name: "Landingpage",
-        link: "/landingpage"
+        name: "Sell",
+        link: "/sell"
     }
 ]
 

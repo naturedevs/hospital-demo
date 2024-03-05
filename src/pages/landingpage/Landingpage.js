@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {MapContainer, TileLayer, Marker, Popup, Tooltip} from 'react-leaflet';
-import { Radio, Typography, Input, Button, Collapse, Card, CardBody } from "@material-tailwind/react";
+import { Radio, Typography, Input, Button, Collapse, Card, Switch  } from "@material-tailwind/react";
 import { Select } from 'antd';
 import Map from './../../components/SmallMap';
 import {types} from "./../../global/type";
@@ -112,64 +112,17 @@ function Landingpage() {
             scrollWheelZoom={true}
             attributionControl={false}
             // style={{position: 'fixed', width: 735, height: 500}}
-            className='w-full h-full relative z-0'>
+            className='w-full h-full relative -z-10'>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
           </MapContainer>
           <div className="left-0 right-0 top-8 z-10 absolute">
-            {/* <div className="w-full pr-6 visible lg:invisible h-0 lg:h-auto">
-              <div className='w-[70%] flex content-right float-right'>
-                <p className="text-black text-lg mr-3 pt-1">
-                  Radius:
-                </p>
-                <Input 
-                  type="number" 
-                  label="Input Radius(40 Km)"
-                  onChange={onRadius}
-                  value={radius}
-                  className="p-0 w-[calc(80%)]"
-                />
-              </div>
-              <div className='w-[70%] flex float-right'>
-                <p className="text-black text-lg ml-5 mr-3 pt-1">
-                  Type:
-                </p>
-                <Select 
-                  label="Type" 
-                  onChange={onSelect} 
-                  name="type"
-                  value={word}
-                  options={types}
-                  defaultValue='all'
-                  style={{ marginTop: 2, minHeight: 40 }}
-                  className=" w-full p-0"
-                />
-              </div>
-              <div className='w-full float-right'>
-                <button
-                  className='w-[calc(70%-75px)] float-right mt-2 h-[40px] rounded-md bg-blue-700' 
-                >Search</button>
-              </div>
-              
-            </div> */}
+            
           </div>
         </div>
         <div className="w-full">
-          <div className="w-full flex pr-3 invisible lg:visible h-0 lg:h-auto">
-            <p className="text-black text-lg mr-3 pt-1">
-              Radius:
-            </p>
-            <Input 
-              type="number" 
-              label="Input Radius(40 Km)"
-              onChange={onRadius}
-              value={radius}
-              className="p-0"
-            />
-            <p className="text-black text-lg ml-5 mr-3 pt-1">
-              Type:
-            </p>
+          <div className="w-full flex pr-3 justify-between h-0 lg:h-auto invisible md:visible">  
             <Select 
               label="Type" 
               onChange={onSelect} 
@@ -177,18 +130,77 @@ function Landingpage() {
               value={word}
               options={types}
               defaultValue='all'
-              style={{ marginTop: 2, minHeight: 40, minWidth: 100 }}
+              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+              className="mr-5"
+              placeholder="Price"
+            />
+            <Select 
+              label="Type" 
+              onChange={onSelect} 
+              name="type"
+              value={word}
+              options={types}
+              defaultValue='all'
+              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+              className="mr-5"
+              placeholder="Beds&Baths"
+            />
+            <Select 
+              label="Type" 
+              onChange={onSelect} 
+              name="type"
+              value={word}
+              options={types}
+              defaultValue='all'
+              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
               className="mr-5"
             />
-            <Button
-              color="blue"
-              size="sm"
-              className="rounded m-[2px]"
-            >
-              Search
-            </Button>
+            <div className='flex'>
+              <Switch 
+                color='green'
+                defaultChecked
+                
+              />
+              <p className='text-black text-lg text-right ml-2 pt-[6px]'>
+                Save
+              </p>
+            </div>
           </div>
           <div className="bg-white bottom-0 md:bottom-auto w-full h-[calc(100vh-430px)] md:h-full md:w-full rounded-xl absolute md:relative z-20 overflow-y-auto pb-10 pr-3 md:pr-0">
+            <div className="w-full flex pr-3 justify-between visible md:invisible h-auto lg:h-0 mt-4">  
+              <Select 
+                label="Type" 
+                onChange={onSelect} 
+                name="type"
+                value={word}
+                options={types}
+                defaultValue='all'
+                style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+                className="mr-5"
+                placeholder="Price"
+              />
+              <Select 
+                label="Type" 
+                onChange={onSelect} 
+                name="type"
+                value={word}
+                options={types}
+                defaultValue='all'
+                style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+                className="mr-5"
+                placeholder="Beds&Baths"
+              />
+              <div className='flex'>
+                <Switch 
+                  color='green'
+                  defaultChecked
+                  
+                />
+                <p className='text-black text-lg text-right ml-2 pt-[6px]'>
+                  Save
+                </p>
+              </div>
+            </div>
             <div className="w-full ">
               {data.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 flex h-40 md:h-44 rounded-xl border-[1px] my-2 mr-3">

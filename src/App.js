@@ -13,7 +13,9 @@ export default function App() {
           <div className="max-w-screen-2xl mx-auto rounded-2xl bg-white h-screen shadow-xl">
             <Header />
             <Routes>
-              <Route path="/landingpage" exact element= {<Landingpage />}/>
+              <Route path="/buy" exact element= {<Landingpage />}/>
+              <Route path="/sell" exact element= {<Landingpage />}/>
+              <Route path="/rent" exact element= {<Landingpage />}/>
               <Route path="/" exact element= {<Landingpage />}/>
             </Routes>
           </div>

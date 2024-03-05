@@ -4,3 +4,6 @@
 .hover-after::after {
   width:  0%;
 }
+.hover-after:focus {
+  width:  auto;
+}
