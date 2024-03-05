@@ -104,15 +104,15 @@ function Landingpage() {
   center = {lat: localStorage.getItem('lati'), lng: localStorage.getItem('long')};
   return(
     <>
-      <div className = "md:flex w-full px-3 overflow-hidden h-[calc(100vh-120px)]">
+      <div className = "md:flex w-full px-3 overflow-hidden h-[calc(100vh-100px)] md:space-x-5">
         <div className="md:w-full overflow-hidden h-[calc(100vh-180px)] md:h-auto px-3 pt-3 rounded-lg absolute top-12 md:top-auto bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10 ">
           <MapContainer
             center={center}
             zoom={zoom}
             scrollWheelZoom={true}
             attributionControl={false}
-            // style={{position: 'fixed', width: 735, height: 500}}
-            className='w-full h-full relative -z-10'>
+            style={{position: 'fixed', width: 735, height: 500}}
+            className='w-full h-full relative -z-10 rounded-2xl'>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
@@ -122,52 +122,8 @@ function Landingpage() {
           </div>
         </div>
         <div className="w-full">
-          <div className="w-full flex pr-3 justify-between h-0 lg:h-auto invisible md:visible">  
-            <Select 
-              label="Type" 
-              onChange={onSelect} 
-              name="type"
-              value={word}
-              options={types}
-              defaultValue='all'
-              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
-              className="mr-5"
-              placeholder="Price"
-            />
-            <Select 
-              label="Type" 
-              onChange={onSelect} 
-              name="type"
-              value={word}
-              options={types}
-              defaultValue='all'
-              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
-              className="mr-5"
-              placeholder="Beds&Baths"
-            />
-            <Select 
-              label="Type" 
-              onChange={onSelect} 
-              name="type"
-              value={word}
-              options={types}
-              defaultValue='all'
-              style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
-              className="mr-5"
-            />
+          <div className="w-full flex pr-3 justify-between h-0 lg:h-auto invisible lg:visible">  
             <div className='flex'>
-              <Switch 
-                color='green'
-                defaultChecked
-                
-              />
-              <p className='text-black text-lg text-right ml-2 pt-[6px]'>
-                Save
-              </p>
-            </div>
-          </div>
-          <div className="bg-white bottom-0 md:bottom-auto w-full h-[calc(100vh-430px)] md:h-full md:w-full rounded-xl absolute md:relative z-20 overflow-y-auto pb-10 pr-3 md:pr-0">
-            <div className="w-full flex pr-3 justify-between visible md:invisible h-auto lg:h-0 mt-4">  
               <Select 
                 label="Type" 
                 onChange={onSelect} 
@@ -175,7 +131,7 @@ function Landingpage() {
                 value={word}
                 options={types}
                 defaultValue='all'
-                style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
                 className="mr-5"
                 placeholder="Price"
               />
@@ -186,18 +142,67 @@ function Landingpage() {
                 value={word}
                 options={types}
                 defaultValue='all'
-                style={{ marginTop: 2, minHeight: 40, minWidth: 140 }}
+                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
                 className="mr-5"
                 placeholder="Beds&Baths"
               />
-              <div className='flex'>
+              <Select 
+                label="Type" 
+                onChange={onSelect} 
+                name="type"
+                value={word}
+                options={types}
+                defaultValue='all'
+                style={{ marginTop: 4, minHeight: 40, minWidth: 140 }}
+                className="mr-5"
+              />
+            </div>
+            <div className='flex'>
+              <Switch 
+                color='green'
+                defaultChecked
+                
+              />
+              <p className='text-black text-lg text-right ml-2 pt-[6px]'>
+                Save Search
+              </p>
+            </div>
+          </div>
+          <div className="bg-white bottom-0 md:bottom-auto w-full h-[calc(100vh-410px)] md:h-full md:w-full rounded-xl absolute md:relative z-20 overflow-y-auto pb-10 pr-3 md:pr-0">
+            <div className="w-full flex pr-3 justify-between visible lg:invisible h-auto lg:h-0 mt-4">  
+              <div className='w-full flex'>
+                <Select 
+                  label="Type" 
+                  onChange={onSelect} 
+                  name="type"
+                  value={word}
+                  options={types}
+                  defaultValue='all'
+                  style={{ marginTop: 2, minHeight: 40, minWidth: 100 }}
+                  className="mr-5"
+                  placeholder="Price"
+                />
+                <Select 
+                  label="Type" 
+                  onChange={onSelect} 
+                  name="type"
+                  value={word}
+                  options={types}
+                  defaultValue='all'
+                  style={{ marginTop: 2, minHeight: 40, minWidth: 100 }}
+                  className="mr-5"
+                  placeholder="Beds&Baths"
+                />
+              </div>
+              
+              <div className='flex w-full float-right'>
                 <Switch 
                   color='green'
                   defaultChecked
                   
                 />
-                <p className='text-black text-lg text-right ml-2 pt-[6px]'>
-                  Save
+                <p className='text-black text-sm ml-1 text-right pt-[8px]'>
+                  Save Search
                 </p>
               </div>
             </div>

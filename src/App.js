@@ -9,8 +9,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Wrapper>
-        <div className="w-screen bg-[#F4F5F7] h-full overflow-x-hidden">
-          <div className="max-w-screen-2xl mx-auto rounded-2xl bg-white h-screen shadow-xl">
+        <div className="w-screen bg-[#F4F5F7] h-full absolute">
+          <div className="max-w-screen-2xl mx-auto rounded-2xl bg-white h-screen shadow-xl  overflow-x-hidden">
             <Header />
             <Routes>
               <Route path="/buy" exact element= {<Landingpage />}/>
