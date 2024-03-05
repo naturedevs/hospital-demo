@@ -154,7 +154,7 @@ function Landingpage() {
               Search
             </Button>
           </div>
-          <div className="bg-white bottom-0 md:bottom-auto w-full h-[calc(100vh-430px)] md:h-full md:w-full rounded-xl absolute md:relative z-20 overflow-y-auto pr-3 md:pr-0">
+          <div className="bg-white bottom-0 md:bottom-auto w-full h-[calc(100vh-430px)] md:h-full md:w-full rounded-xl absolute md:relative z-20 overflow-y-auto pb-10 pr-3 md:pr-0">
             <div className="w-full ">
               {data.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 flex h-40 md:h-44 rounded-xl border-[1px] my-2 mr-3">
