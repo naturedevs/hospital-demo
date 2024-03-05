@@ -117,8 +117,42 @@ function Landingpage() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
           </MapContainer>
-          <div className="left-0 right-0 top-0 z-10 absolute">
-            asd
+          <div className="left-0 right-0 top-8 z-10 absolute">
+            {/* <div className="w-full pr-6 visible lg:invisible h-0 lg:h-auto">
+              <div className='w-[70%] flex content-right float-right'>
+                <p className="text-black text-lg mr-3 pt-1">
+                  Radius:
+                </p>
+                <Input 
+                  type="number" 
+                  label="Input Radius(40 Km)"
+                  onChange={onRadius}
+                  value={radius}
+                  className="p-0 w-[calc(80%)]"
+                />
+              </div>
+              <div className='w-[70%] flex float-right'>
+                <p className="text-black text-lg ml-5 mr-3 pt-1">
+                  Type:
+                </p>
+                <Select 
+                  label="Type" 
+                  onChange={onSelect} 
+                  name="type"
+                  value={word}
+                  options={types}
+                  defaultValue='all'
+                  style={{ marginTop: 2, minHeight: 40 }}
+                  className=" w-full p-0"
+                />
+              </div>
+              <div className='w-full float-right'>
+                <button
+                  className='w-[calc(70%-75px)] float-right mt-2 h-[40px] rounded-md bg-blue-700' 
+                >Search</button>
+              </div>
+              
+            </div> */}
           </div>
         </div>
         <div className="w-full">

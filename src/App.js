@@ -14,6 +14,7 @@ export default function App() {
             <Header />
             <Routes>
               <Route path="/landingpage" exact element= {<Landingpage />}/>
+              <Route path="/" exact element= {<Landingpage />}/>
             </Routes>
           </div>
         </div>
