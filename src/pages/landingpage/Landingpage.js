@@ -99,39 +99,39 @@ function Landingpage() {
       "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
       "img" : "/images/people/people8.png"
     },
-    // {
-    //   "id": 8,
-    //   "name" : "Lakewood at Lake Merced",
-    //   "price": 3500,
-    //   "x": 222,
-    //   "y": 222,
-    //   "title1": "2BD",
-    //   "title12": "2CD",
-    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-    //   "img" : "/images/people/people9.png"
-    // },
-    // {
-    //   "id": 9,
-    //   "name" : "Lakewood at Lake Merced",
-    //   "price": 3500,
-    //   "x": 222,
-    //   "y": 222,
-    //   "title1": "2BD",
-    //   "title12": "2CD",
-    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-    //   "img" : "/images/people/people10.png"
-    // },
-    // {
-    //   "id": 10,
-    //   "name" : "Lakewood at Lake Merced",
-    //   "price": 3500,
-    //   "x": 222,
-    //   "y": 222,
-    //   "title1": "2BD",
-    //   "title12": "2CD",
-    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-    //   "img" : "/images/people/people11.png"
-    // }
+    {
+      "id": 8,
+      "name" : "Lakewood at Lake Merced",
+      "price": 3500,
+      "x": 222,
+      "y": 222,
+      "title1": "2BD",
+      "title12": "2CD",
+      "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "img" : "/images/people/people9.png"
+    },
+    {
+      "id": 9,
+      "name" : "Lakewood at Lake Merced",
+      "price": 3500,
+      "x": 222,
+      "y": 222,
+      "title1": "2BD",
+      "title12": "2CD",
+      "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "img" : "/images/people/people10.png"
+    },
+    {
+      "id": 10,
+      "name" : "Lakewood at Lake Merced",
+      "price": 3500,
+      "x": 222,
+      "y": 222,
+      "title1": "2BD",
+      "title12": "2CD",
+      "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "img" : "/images/people/people11.png"
+    }
 
   ]
   
@@ -249,7 +249,7 @@ function Landingpage() {
             <div className="w-full ">
               {data.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 flex h-40 md:h-44 rounded-xl border-[1px] my-2 mr-3">
-                  <img src={item.img} className="object-cover w-3 rounded-xl"/>
+                  <img src={item.img} className="object-cover w-36 rounded-xl"/>
                   <div className="px-4 overflow-hidden">
                     <div className="flex w-full">
                       <p className="w-full text-black text-left text-sm md:text-xl">{"$"+item.price+"/month"}</p>
