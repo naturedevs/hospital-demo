@@ -3,6 +3,7 @@ import {Navbar, Collapse, Typography, IconButton} from "@material-tailwind/react
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom"
 import './Header.css'
+import logo from "./../assets/logo/logo.png"
 
 export default function Header() {
     const [openNav, setOpenNav] = React.useState(false);
@@ -46,9 +47,11 @@ export default function Header() {
 
     return (
         <>
-            <div className="pb-10 px-5 pt-5">
-                <div className="flex sm:flex-row-reverse items-center justify-between text-blue-gray-900">
-                    <div className="flex" onClick={onToggle}>
+            <div className="pb-5 px-5 pt-5 z-100">
+                <div className="flex w-full">
+                <img src={logo} className="w-8 h-8 mr-6 mt-1"/>
+                <div className="flex w-full sm:flex-row-reverse items-center justify-between text-blue-gray-900">                    
+                    <div className="flex invisible sm:visible" onClick={onToggle}>
                         <div className="mr-2 my-auto">
                             <img src={userData.img} className="my-auto rounded-full w-[60px]"/>
                         </div>
@@ -82,6 +85,8 @@ export default function Header() {
                                 : (<Bars3Icon className="h-6 w-6" strokeWidth={2}/>)}
                         </IconButton>
                     </div>
+                </div>
+                
                 </div>
                 <Collapse open={openNav} className="z-[1000]">
                     <NavList/>
@@ -118,7 +123,7 @@ function NavList() {
                     className="p-1 font-medium ">
                     <Link
                         to={link.link}>
-                        <p className="text-black flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
+                        <p className="text-black font-sans flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
                     </Link>
                 </Typography>
             ))}

@@ -19,3 +19,10 @@
   background: #272727; 
   width: 2px;
 }
+.mapContainerDiv {
+  z-index: 50; /* Lower than the Header's z-index */
+ }
+ 
+ .peopleListDiv {
+  z-index: 50; /* Lower than the Header's z-index */
+ }
