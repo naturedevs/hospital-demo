@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {MapContainer, TileLayer, Marker, Popup, Tooltip} from 'react-leaflet';
-import { Radio, Typography, Input, Button, Collapse, Card, Switch  } from "@material-tailwind/react";
+import {MapContainer, TileLayer} from 'react-leaflet';
+import { Switch  } from "@material-tailwind/react";
 import { Select } from 'antd';
 import Map from './../../components/SmallMap';
 import {types} from "./../../global/type";
@@ -10,7 +10,6 @@ function Landingpage() {
   var center = {lat: localStorage.getItem('lati1'), lng: localStorage.getItem('long1')};
   const [zoom, setZoom] = useState(13);
   const [word, setWord] = React.useState("");
-  const [radius, setRadius] = React.useState("");
   const data = [
     {
       "id": 0,
@@ -88,12 +87,53 @@ function Landingpage() {
       "title12": "2CD",
       "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
       "img" : "/images/people/people7.png"
-    }
+    },
+    {
+      "id": 7,
+      "name" : "Lakewood at Lake Merced",
+      "price": 3500,
+      "x": 222,
+      "y": 222,
+      "title1": "2BD",
+      "title12": "2CD",
+      "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "img" : "/images/people/people8.png"
+    },
+    // {
+    //   "id": 8,
+    //   "name" : "Lakewood at Lake Merced",
+    //   "price": 3500,
+    //   "x": 222,
+    //   "y": 222,
+    //   "title1": "2BD",
+    //   "title12": "2CD",
+    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+    //   "img" : "/images/people/people9.png"
+    // },
+    // {
+    //   "id": 9,
+    //   "name" : "Lakewood at Lake Merced",
+    //   "price": 3500,
+    //   "x": 222,
+    //   "y": 222,
+    //   "title1": "2BD",
+    //   "title12": "2CD",
+    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+    //   "img" : "/images/people/people10.png"
+    // },
+    // {
+    //   "id": 10,
+    //   "name" : "Lakewood at Lake Merced",
+    //   "price": 3500,
+    //   "x": 222,
+    //   "y": 222,
+    //   "title1": "2BD",
+    //   "title12": "2CD",
+    //   "brief" : "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+    //   "img" : "/images/people/people11.png"
+    // }
 
   ]
-  const onRadius = (e) => {
-      setRadius(e.target.value);
-  };
   
   const onSelect = (e) => {
       setWord(e);
@@ -209,7 +249,7 @@ function Landingpage() {
             <div className="w-full ">
               {data.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 flex h-40 md:h-44 rounded-xl border-[1px] my-2 mr-3">
-                  <img src={item.img} className="object-cover w-40 rounded-xl"/>
+                  <img src={item.img} className="object-cover w-3 rounded-xl"/>
                   <div className="px-4 overflow-hidden">
                     <div className="flex w-full">
                       <p className="w-full text-black text-left text-sm md:text-xl">{"$"+item.price+"/month"}</p>
