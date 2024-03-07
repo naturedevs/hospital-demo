@@ -123,7 +123,7 @@ function NavList() {
                     className="p-1 font-medium ">
                     <Link
                         to={link.link}>
-                        <p className="text-black font-sans flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
+                        <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
                     </Link>
                 </Typography>
             ))}
