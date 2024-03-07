@@ -70,7 +70,7 @@ function Landingpage() {
           </MapContainer>
         </div>
         <div className="w-full">
-          <div className="w-full  justify-between px-5 h-0 lg:h-auto hidden lg:flex visible md:visible">  
+          <div className="w-full  justify-between px-5 h-0 lg:h-auto hidden lg:flex visible lg:visible">  
             <div className='flex'>
               <Dropdown />
               <div className='w-[150px]'>
@@ -95,7 +95,7 @@ function Landingpage() {
               <div className='w-full h-[2px] bg-gray-800 visible md:hidden'  />
               {/* <img src='/images/logo.png'/> */}
             </div>
-            <div className="w-full flex pr-3 justify-between visible lg:invisible h-auto lg:h-0 mt-4">  
+            <div className="w-full flex pr-3 justify-between visible sm:invisible h-auto lg:h-0 mt-4">  
               <div className='lg:flex'>
                 <div className='z-10 relative'>
                   <Dropdown />
@@ -146,7 +146,7 @@ function Landingpage() {
         </div>
         <div className={`z-50 absolute visible sm:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3`} style={{ top: `${yPosition}px` }}>
           <div ref={ref} id='bar' className='absolute top-0  left-0 right-0 w-full cursor-move'>
-            <div className='w-full h-[2px] bg-gray-800 visible md:hidden'  />
+            <div className='w-full h-[2px] bg-gray-800 visible sm:hidden'  />
               <div className='w-full flex'>
               <div className='m-auto w-[32px] pt-1 h-2'>
                 <div className='w-full h-[2px] bg-black my-[2px]'/>
