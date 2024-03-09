@@ -19,7 +19,7 @@ function Landingpage() {
       element.addEventListener('touchstart', onTouchStart, false);
       return () => element.removeEventListener('touchstart', onTouchStart);
     }
-  }, []);
+  }, [yPosition]);
   const [zoom, setZoom] = useState(13);
   const people = data.data
   const ref = useRef(null);
@@ -38,7 +38,6 @@ function Landingpage() {
       document.removeEventListener('touchmove', onTouchMove);
       document.removeEventListener('touchend', onTouchEnd);
     };
-
     document.addEventListener('touchmove', onTouchMove, { passive: false });
     document.addEventListener('touchend', onTouchEnd);
  };
