@@ -33,3 +33,14 @@
   padding: 15px;
   margin-top: -15px;
 }
+
+.your-element {
+  height: 50vh; /* Example: 50% of the viewport height */
+ }
+ 
+ /* Adjust height for small mobile devices */
+ @media (max-width: 480px) {
+  .your-element {
+     height: 30vh; /* Example: 30% of the viewport height */
+  }
+ }

@@ -1,14 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {MapContainer, TileLayer} from 'react-leaflet';
-import { Switch,Input  } from "@material-tailwind/react";
-import {DatePicker} from "antd"
-import { Select } from 'antd';
-import Map from './../../components/SmallMap';
+import { Switch } from "@material-tailwind/react";
+import Dropdown from '../../components/dropdown/Dropdown';
+import {DatePicker, Input} from "antd"
+import { SearchOutlined } from '@ant-design/icons';
 import Header from '../../components/Header';
 import {types} from "./../../global/type";
 import './landingpage.css'
 import data from './../../global/people.json'
-import Dropdown from '../../components/dropdown/Dropdown';
 
 function Landingpage() {
   var center = {lat: localStorage.getItem('lati1'), lng: localStorage.getItem('long1')};
@@ -23,7 +22,7 @@ function Landingpage() {
  }, []);
   const [zoom, setZoom] = useState(13);
   const people = data.data
-  const [yPosition, setYPosition] = useState(250);
+  const [yPosition, setYPosition] = useState(450);
   const ref = useRef(null);
  
   const onTouchStart = (event) => {
@@ -32,7 +31,7 @@ function Landingpage() {
 
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
-      if(yPosition > 150) setYPosition(newY);
+      if(yPosition > 120) setYPosition(newY);
       console.log(yPosition);
     };
 
@@ -45,7 +44,10 @@ function Landingpage() {
     document.addEventListener('touchend', onTouchEnd);
  };
  
-
+  const newHeight = `${yPosition-30}px`;
+  const onSearch = () => {
+    console.log("search");
+  }
   function truncateText(text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   }
@@ -56,70 +58,64 @@ function Landingpage() {
         <Header />
       </div>
       <div className = "w-full flex relative sm:relative h-[calc(100vh-90px)] lg:space-x-5  px-4 z-0" >
-        <div className={`mapContainerDiv w-full overflow-hidden h-[calc(100vh-120px)] md:h-auto rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
+        <div  className={`mapContainerDiv w-full overflow-hidden md:h-auto rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
             zoom={zoom}
             scrollWheelZoom={true}
             attributionControl={false}
             // style={{position: 'fixed', width: 735, height: 500}}
-            className='w-full h-full relative -z-10'>
+            className='w-full h-[calc(100%-30px)] relative -z-10'>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
           </MapContainer>
-        </div>
-        <div className="w-full">
-          <div className="w-full  justify-between px-5 h-0 lg:h-auto hidden lg:flex visible lg:visible">  
-            <div className='flex'>
-              <Dropdown />
-              <div className='w-[150px]'>
-                <DatePicker 
-                  size='large'
-                />
+          <div ref={ref} id='bar' style={{ top: newHeight}} className='absolute bottom-[20px] sm:hidden bg-white left-0 right-0 w-full cursor-move rounded-t-lg'>
+            <div className='w-full h-[2px] visible pt-3 sm:hidden'/>
+              <div className='w-full flex'>
+              <div className='m-auto w-[32px] pt-1 h-2'>
+                <div className='w-full h-[2px] bg-black my-[2px]'/>
+                <div className='w-full h-[2px] bg-black my-[2px]'/>
               </div>
-            </div>
-            
-            <div className='flex'>
-              <Switch 
-                color='green'
-                defaultChecked
-              />
-              <p className='text-black text-lg text-right ml-2 pt-[4px]'>
-                Save Search
-              </p>
             </div>
           </div>
-          <div className={`bg-white bottom-0 md:bottom-auto w-full invisible sm:visible md:h-full rounded-xl absolute md:static right-0 pl-5 z-20 overflow-y-auto pb-10 pr-3 md:pr-0`}>
-            <div className='w-full cursor-move'>
-              <div className='w-full h-[2px] bg-gray-800 visible md:hidden'  />
-              {/* <img src='/images/logo.png'/> */}
-            </div>
-            <div className="w-full flex pr-3 justify-between visible sm:invisible h-auto lg:h-0 mt-4">  
-              <div className='lg:flex'>
-                <div className='z-10 relative'>
-                  <Dropdown />
-                </div>
-                <div className='w-[150px] mt-4 z-0'>
+        </div>
+        <div className="w-full relative">
+          <div className="w-full  justify-between px-5 h-0 lg:h-auto lg:flex sm:visible bg-white">
+            <div className='xl:flex'>
+              <div className='w-auto'>
+                <Input 
+                  placeholder="Search by Address"
+                  onSearch={onSearch}
+                  style={{
+                    height: 40
+                  }}
+                  suffix={<SearchOutlined />}
+                />  
+              </div>
+              <div className='flex w-auto xl:px-2'>
+                <Dropdown />
+                <div className='w-full'>
                   <DatePicker 
-                  size='large'
-                />
-                </div>
-              </div>
-              <div className='flex min-w-[90px] float-right'>
-                <div className='my-auto'>
-                  <div className='pl-2'>
-                    <Switch 
-                      color='green'
-                      defaultChecked
-                    />
-                  </div>
-                  <p className='text-black text-sm ml-2 text-right pt-[px]'>
-                    Save Search
-                  </p>
+                    size='large'
+                    style={{ width: "100%" }}
+                  />
                 </div>
               </div>
             </div>
+            <div className='w-full md:w-auto flex'>
+              <div className='w-auto flex items-center ml-auto'>
+                <Switch 
+                  color='green'
+                  defaultChecked
+                />
+                <p className='text-black text-lg text-right ml-2 '>
+                  Save Search
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={`bg-white bottom-0 md:bottom-auto w-full invisible sm:visible md:h-full rounded-xl absolute sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full ">
               {people.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
@@ -144,29 +140,29 @@ function Landingpage() {
             </div>
           </div>
         </div>
-        <div className={`z-50 absolute visible sm:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3`} style={{ top: `${yPosition}px` }}>
-          <div ref={ref} id='bar' className='absolute top-0  left-0 right-0 w-full cursor-move'>
-            <div className='w-full h-[2px] bg-gray-800 visible sm:hidden'  />
-              <div className='w-full flex'>
-              <div className='m-auto w-[32px] pt-1 h-2'>
-                <div className='w-full h-[2px] bg-black my-[2px]'/>
-                <div className='w-full h-[2px] bg-black my-[2px]'/>
-              </div>
-            </div>
-          </div>
-          <div className="w-full flex pr-3 justify-between visible sm:invisible lg:h-0 mt-6 relative">  
-            <div className='lg:flex'>
-              <div className='z-10 relative'>
-                <Dropdown />
-              </div>
-              <div className='w-[150px] mt-4 z-0'>
-                <DatePicker 
-                size='large'
+        <div className={`z-50 absolute visible sm:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} style={{ top: `${yPosition}px` }}>
+          <div className="w-full pr-3 justify-between visible sm:invisible mt-1 relative space-y-2">  
+            <div className='w-full flex '>
+              <Input 
+                placeholder="Search by Address"
+                onSearch={onSearch}
+                style={{
+                  height: 40,
+                }}
+                suffix={<SearchOutlined />}
               />
+            </div>
+            <div className='w-full flex'>
+              <Dropdown/>
+              <div className='w-full'>
+                <DatePicker 
+                  size='large'
+                  style={{ width: "100%" }}
+                />
               </div>
             </div>
-            <div className='flex min-w-[90px] float-right'>
-              <div className='my-auto'>
+            <div className='w-full flex'>
+              <div className=' flex items-center mx-auto'>
                 <div className='pl-2'>
                   <Switch 
                     color='green'
