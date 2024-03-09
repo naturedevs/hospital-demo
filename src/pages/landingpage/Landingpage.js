@@ -81,7 +81,7 @@ function Landingpage() {
           </div>
         </div>
         <div className="w-full">
-          <div className="w-full  justify-between px-5 h-0 md:h-auto lg:flex sm:visible bg-white z-100">
+          <div className="w-full  justify-between px-5 h-0 md:h-auto lg:flex sm:visible bg-white z-100 space-y-1">
             <div className='xl:flex'>
               <div className='w-auto'>
                 <Input 
@@ -109,7 +109,7 @@ function Landingpage() {
                   color='green'
                   defaultChecked
                 />
-                <p className='text-black text-lg text-right ml-2 '>
+                <p className='text-black text-sm lg:text-lg text-right ml-2 '>
                   Save Search
                 </p>
               </div>
