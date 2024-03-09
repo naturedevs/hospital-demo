@@ -33,6 +33,7 @@ function Landingpage() {
       const newY = event.touches[0].clientY - startY;
       if(newY > 20 && newY < screen.height-140) setYPosition(newY);
       console.log(newY);
+      console.log
     };
 
     const onTouchEnd = () => {
@@ -57,8 +58,8 @@ function Landingpage() {
       <div className='w-full relative top-0 z-100'>
         <Header />
       </div>
-      <div className = "w-full flex relative sm:relative h-[calc(100vh-120px)] lg:space-x-5  px-4 z-0" >
-        <div  className={`mapContainerDiv w-full overflow-hidden md:h-auto rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
+      <div className = "w-full flex relative sm:relative h-[calc(100vh-90px)] lg:space-x-5  px-4 z-0" >
+        <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
             zoom={zoom}
@@ -70,7 +71,7 @@ function Landingpage() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
           </MapContainer>
-          <div ref={ref} id='bar' style={{ top: newHeight}} className='absolute bottom-[20px] sm:-bottom-[20px] sm:hidden bg-white left-0 right-0 w-full cursor-move rounded-t-lg'>
+          <div ref={ref} id='bar' style={{ top: newHeight}} className='absolute bottom-[20px] sm:invisible bg-white left-0 right-0 w-full cursor-move rounded-t-lg'>
             <div className='w-full h-[2px] visible pt-3 sm:hidden'/>
               <div className='w-full flex'>
               <div className='m-auto w-[32px] pt-1 h-2'>
@@ -115,7 +116,7 @@ function Landingpage() {
               </div>
             </div>
           </div>
-          <div className={`bg-white bottom-auto w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
+          <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full">
               {people.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
