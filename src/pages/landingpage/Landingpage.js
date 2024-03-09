@@ -80,8 +80,8 @@ function Landingpage() {
             </div>
           </div>
         </div>
-        <div className="w-full relative">
-          <div className="w-full  justify-between px-5 h-0 lg:h-auto lg:flex sm:visible bg-white z-100">
+        <div className="w-full">
+          <div className="w-full  justify-between px-5 h-0 md:h-auto lg:flex sm:visible bg-white z-100">
             <div className='xl:flex'>
               <div className='w-auto'>
                 <Input 
@@ -115,7 +115,7 @@ function Landingpage() {
               </div>
             </div>
           </div>
-          <div className={`bg-white bottom-0 md:bottom-auto w-full invisible sm:visible md:h-full rounded-xl absolute sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
+          <div className={`bg-white bottom-auto w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full">
               {people.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">

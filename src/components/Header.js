@@ -58,7 +58,7 @@ export default function Header() {
                         
                         <Link
                         
-                            onClick={() => setOpenNav(!openNav)}
+                            onClick={() => setOpenNav(false)}
                             to={link.link}>
                             <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
                         </Link>
