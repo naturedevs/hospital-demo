@@ -44,7 +44,29 @@ export default function Header() {
             window.removeEventListener("resize", handleWindowResize);
         };
     }, []);
-
+    function NavList() {
+        return (
+            <ul
+                className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6">
+                {links.map((link, index) => (
+                    <Typography
+                        as="li"
+                        key = {"header" + index}
+                        variant="small"
+                        color="blue-gray"
+                        className="p-1 font-medium ">
+                        
+                        <Link
+                        
+                            onClick={() => setOpenNav(!openNav)}
+                            to={link.link}>
+                            <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
+                        </Link>
+                    </Typography>
+                ))}
+            </ul>
+        );
+    }
     return (
         <>
             <div className="pb-5 px-5 pt-5 z-100">
@@ -110,23 +132,3 @@ const links = [
     }
 ]
 
-function NavList() {
-    return (
-        <ul
-            className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6">
-            {links.map((link, index) => (
-                <Typography
-                    as="li"
-                    key = {"header" + index}
-                    variant="small"
-                    color="blue-gray"
-                    className="p-1 font-medium ">
-                    <Link
-                        to={link.link}>
-                        <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
-                    </Link>
-                </Typography>
-            ))}
-        </ul>
-    );
-}
