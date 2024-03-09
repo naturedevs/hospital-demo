@@ -57,7 +57,7 @@ function Landingpage() {
       <div className='w-full relative top-0 z-100'>
         <Header />
       </div>
-      <div className = "w-full flex relative sm:relative h-[calc(100vh-90px)] lg:space-x-5  px-4 z-0" >
+      <div className = "w-full flex relative sm:relative h-[calc(100vh-120px)] lg:space-x-5  px-4 z-0" >
         <div  className={`mapContainerDiv w-full overflow-hidden md:h-auto rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
@@ -65,12 +65,12 @@ function Landingpage() {
             scrollWheelZoom={true}
             attributionControl={false}
             // style={{position: 'fixed', width: 735, height: 500}}
-            className='w-full h-[calc(100%-30px)] relative -z-10'>
+            className='w-full h-full relative -z-10'>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
           </MapContainer>
-          <div ref={ref} id='bar' style={{ top: newHeight}} className='absolute bottom-[20px] sm:hidden bg-white left-0 right-0 w-full cursor-move rounded-t-lg'>
+          <div ref={ref} id='bar' style={{ top: newHeight}} className='absolute bottom-[20px] sm:-bottom-[20px] sm:hidden bg-white left-0 right-0 w-full cursor-move rounded-t-lg'>
             <div className='w-full h-[2px] visible pt-3 sm:hidden'/>
               <div className='w-full flex'>
               <div className='m-auto w-[32px] pt-1 h-2'>
