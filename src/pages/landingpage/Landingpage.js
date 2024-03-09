@@ -12,17 +12,16 @@ import data from './../../global/people.json'
 function Landingpage() {
   var center = {lat: localStorage.getItem('lati1'), lng: localStorage.getItem('long1')};
   
+  const [yPosition, setYPosition] = useState(350);
   useEffect(() => {
     const element = ref.current;
     if (element) {
       element.addEventListener('touchstart', onTouchStart, false);
-
       return () => element.removeEventListener('touchstart', onTouchStart);
     }
- }, []);
+  }, []);
   const [zoom, setZoom] = useState(13);
   const people = data.data
-  const [yPosition, setYPosition] = useState(350);
   const ref = useRef(null);
  
   const onTouchStart = (event) => {
@@ -32,8 +31,7 @@ function Landingpage() {
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
       if(newY > 20 && newY < screen.height-140) setYPosition(newY);
-      console.log(newY);
-      console.log
+
     };
 
     const onTouchEnd = () => {
@@ -46,9 +44,9 @@ function Landingpage() {
  };
  
   const newHeight = `${yPosition-30}px`;
-  const onSearch = () => {
-    console.log("search");
-  }
+  // const onSearch = () => {
+  //   console.log("search");
+  // }
   function truncateText(text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   }
@@ -87,7 +85,7 @@ function Landingpage() {
               <div className='w-auto'>
                 <Input 
                   placeholder="Search by Address"
-                  onSearch={onSearch}
+                  // onSearch={onSearch}
                   style={{
                     height: 40
                   }}
@@ -146,7 +144,7 @@ function Landingpage() {
             <div className='w-full flex '>
               <Input 
                 placeholder="Search by Address"
-                onSearch={onSearch}
+                // onSearch={onSearch}
                 style={{
                   height: 40,
                 }}
