@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Wrapper } from './components/Wrapper';
 import Header from './components/Header';
 import Landingpage from './pages/landingpage/Landingpage'
-import Landingpagere from './pages/landingpage/Landingpagere';
 
 export default function App() {
   return (
@@ -17,12 +16,9 @@ export default function App() {
                 <Route path="/sell" exact element= {<Landingpage />}/>
                 <Route path="/rent" exact element= {<Landingpage />}/>
                 <Route path="/" exact element= {<Landingpage />}/>
-                <Route path="/re" exact element= {<Landingpagere />}/>
               </Routes>
           </div>
-        </div>
-        
-        
+        </div>       
       </Wrapper>
     </BrowserRouter>
   )
