@@ -126,7 +126,6 @@ function Landingpage() {
                       <p className="text-right text-black text-sm md:text-xl zmdi zmdi-favorite-outline" />
                     </div>
                     <div className="w-full">
-                      
                       <p className="w-full text-black text-left text-xs lg:text-lg">{item.name}</p>
                       <p className="w-full pb-3 text-gray-500 text-sm md:text-md overflow-hidden">{truncateText(item.brief, 100)}</p>
                       <div className="w-full justify-end h-[1px] bg-gray-500 my-1"/>
