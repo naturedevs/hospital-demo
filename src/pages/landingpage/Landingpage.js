@@ -183,7 +183,7 @@ function Landingpage() {
                 </div>
               </div>
             </div>
-            {/* <div className='w-full md:w-auto flex'>
+            <div className='w-full md:w-auto flex'>
               <div className='w-auto flex items-center ml-auto'>
                 <Switch 
                   color='green'
@@ -193,7 +193,7 @@ function Landingpage() {
                   Save Search
                 </p>
               </div>
-            </div> */}
+            </div>
           </div>
           <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full">
