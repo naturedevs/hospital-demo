@@ -65,35 +65,38 @@ function Landingpage() {
             onClick={()=> setDateModalShow(false)}
           >
           </div>   
-          <div className='absolute left-1 right-1 z-[101] top-[200px]'>
+          <div className='absolute left-1 right-1 z-[101] top-[200px] md:hidden'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <div className='bg-white  rounded-xl overflow-hidden'>
                 <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
                 <div className='w-full pb-4 flex'>
                   <div className='flex mx-auto space-x-3'>
                     <button 
-                      className='bg-[#8ABF3C] py-1 w-[100px] rounded-lg'
+                      className='bg-[#1565C0] py-1 w-[100px] rounded-lg'
                       onClick={()=>{
                         setDateValue(value)
                         setDateModalShow(false)
                       }}
                     >
-                      Okay
+                      <p className='text-white'>
+                        Okay
+                      </p>
                     </button>
                     <button 
-                      className='bg-red-300 py-1 w-[100px] rounded-lg'
+                      className='bg-red-600 py-1 w-[100px] rounded-lg'
                       onClick={()=>setDateModalShow(false)}
                     >
-                      Close
+                      <p className='text-white'>
+                        Cancel
+                      </p>      
                     </button>
                   </div>
                   <button></button>
                 </div>
               </div>
             </LocalizationProvider>
-          </div>
-          
-          </>
+          </div>  
+        </>
       )}
       <div className='w-full relative top-0 z-100'>
         <Header />
