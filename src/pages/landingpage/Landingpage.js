@@ -38,7 +38,7 @@ function Landingpage() {
 
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
-      if(newY > 118 && newY < screen.height-110) setYPosition(newY);
+      if(newY > 18 && newY < screen.height-260) setYPosition(newY);
 
     };
 
@@ -50,7 +50,7 @@ function Landingpage() {
     document.addEventListener('touchend', onTouchEnd);
  };
  
-  const searchbarHeight = `${yPosition-120}px`
+  const searchbarHeight = `${yPosition-20}px`
   
   function truncateText(text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
@@ -101,7 +101,7 @@ function Landingpage() {
       <div className='w-full relative top-0 z-100'>
         <Header />
       </div>
-      <div className = "w-full flex relative sm:relative h-[calc(100vh-90px)] lg:space-x-5  px-4 z-0" >
+      <div className = "w-full flex relative sm:relative h-[calc(100vh-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
         <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
@@ -126,40 +126,6 @@ function Landingpage() {
                 <div className='w-full h-[2px] bg-black my-[2px]'/>
                 <div className='w-full h-[2px] bg-black my-[2px]'/>
               </div>
-            </div>
-            <div className="w-full px-3 justify-between visible md:invisible mt-2 relative space-y-2">  
-              <div className='w-full flex '>
-                <Input 
-                  placeholder="Search by Address"
-                  // onSearch={onSearch}
-                  style={{
-                    height: 40,
-                  }}
-                  suffix={<SearchOutlined />}
-                />
-              </div>
-              <div className='w-full flex'>
-                <Dropdown/>
-                <div className='w-full'>
-                  <DatePicker 
-                    size='large'
-                    style={{ width: "100%" }}
-                  />
-                </div>
-              </div>
-              {/* <div className='w-full flex'>
-                <div className=' flex items-center mx-auto'>
-                  <div className='pl-2'>
-                    <Switch 
-                      color='green'
-                      defaultChecked
-                    />
-                  </div>
-                  <p className='text-black text-sm ml-2 text-right pt-[px]'>
-                    Save Search
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -186,7 +152,7 @@ function Landingpage() {
                 </div>
               </div>
             </div>
-            <div className='w-full md:w-auto flex'>
+            {/* <div className='w-full md:w-auto flex'>
               <div className='w-auto flex items-center ml-auto'>
                 <Switch 
                   color='green'
@@ -196,7 +162,7 @@ function Landingpage() {
                   Save Search
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full">
@@ -222,8 +188,46 @@ function Landingpage() {
             </div>
           </div>
         </div>
-        <div className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} style={{ top: `${yPosition}px` }}>
-   
+        <div 
+          className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
+          style={{ top: `${yPosition}px` }}
+        >
+          <div 
+            className="w-full px-3 justify-between visible md:invisible mt-2 space-y-2"
+          >  
+            <div className='w-full flex'>
+              <Input 
+                placeholder="Search by Address"
+                // onSearch={onSearch}
+                style={{
+                  height: 40,
+                }}
+                suffix={<SearchOutlined />}
+              />
+            </div>
+            <div className='w-full flex'>
+              <Dropdown/>
+              <div className='w-full'>
+                <DatePicker 
+                  size='large'
+                  style={{ width: "100%" }}
+                />
+              </div>
+            </div>
+            {/* <div className='w-full flex'>
+              <div className=' flex items-center mx-auto'>
+                <div className='pl-2'>
+                  <Switch 
+                    color='green'
+                    defaultChecked
+                  />
+                </div>
+                <p className='text-black text-sm ml-2 text-right pt-[px]'>
+                  Save Search
+                </p>
+              </div>
+            </div> */}
+          </div>
           <div className="w-full ">
             {people.map((item, index) => (
               <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
