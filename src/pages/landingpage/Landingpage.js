@@ -101,7 +101,7 @@ function Landingpage() {
       <div className='w-full relative top-0 z-100'>
         <Header />
       </div>
-      <div className = "w-full flex relative sm:relative h-[calc(100vh-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
+      <div className = "w-full flex relative sm:relative h-[90vh] lg:space-x-5  px-4 z-0 overflow-hidden" >
         <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
