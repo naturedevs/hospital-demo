@@ -17,13 +17,24 @@ function Landingpage() {
   var center = {lat: localStorage.getItem('lati1'), lng: localStorage.getItem('long1')};
   const [yPosition, setYPosition] = useState(350);
   const [zoom, setZoom] = useState(13);
-  const [dateModalShow, setDateModalShow] = useState(true)
-  const [cattegoryModalShow, setCategoryModalShow] = useState(false)
+  const [modalShow, setModalShow] = useState(true)
+  const [dateModalShow, setDateModalShow] = useState(false)
+  const [categoryModalShow, setCategoryModalShow] = useState(true)
   const people = data.data
   const ref = useRef(null);
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [dateValue, setDateValue] = React.useState(dayjs('2022-04-17'));
 
+// check box in mobile modal.
+  const [selected, setSelected] = useState(null);
+  const categoryTypes = [
+    {id: 0,value: 'all', label: 'All'},
+    {id: 1,value: 'dev', label: 'Developer'},
+    {id: 2,value: 'singer', label: 'Singer'},
+    {id: 3,value: 'student', label: 'Student'},
+    {id: 4,value: 'artist', label: 'Artist'},
+    {id: 5,value: 'officer', label: 'Officer'}
+  ]
   useEffect(() => {
     const element = ref.current;
     if (element) {
@@ -51,21 +62,21 @@ function Landingpage() {
  };
  
   const searchbarHeight = `${yPosition-20}px`
-  
+
   function truncateText(text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   }
   center = {lat: localStorage.getItem('lati'), lng: localStorage.getItem('long')};
   return(
     <>
-      {dateModalShow && (
+      {modalShow && (
         <>
           <div 
             className='absolute left-0 right-0 -bottom-[100px] top-0 md:hidden z-[100] bg-black opacity-65'
-            onClick={()=> setDateModalShow(false)}
+            onClick={()=> setModalShow(false)}
           >
           </div>   
-          <div className='absolute left-1 right-1 z-[101] top-[200px] md:hidden'>
+          <div className={`absolute left-1 right-1 sm:left-20 sm:right-20 z-[101] top-[200px] md:hidden ${dateModalShow? "" : "hidden"}`}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <div className='bg-white  rounded-xl overflow-hidden'>
                 <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
@@ -76,6 +87,7 @@ function Landingpage() {
                       onClick={()=>{
                         setDateValue(value)
                         setDateModalShow(false)
+                        setModalShow(false)
                       }}
                     >
                       <p className='text-white'>
@@ -84,7 +96,10 @@ function Landingpage() {
                     </button>
                     <button 
                       className='bg-red-600 py-1 w-[100px] rounded-lg'
-                      onClick={()=>setDateModalShow(false)}
+                      onClick={()=>{
+                        setDateModalShow(false)
+                        setModalShow(false)
+                      }}
                     >
                       <p className='text-white'>
                         Cancel
@@ -95,24 +110,72 @@ function Landingpage() {
                 </div>
               </div>
             </LocalizationProvider>
-          </div>  
+          </div>
+          <div className={`absolute left-1 right-1 sm:left-20 sm:right-20 z-[101] top-[200px] md:hidden ${categoryModalShow? "" : "hidden"}`}>
+            <div className='bg-white  rounded-xl overflow-hidden'>
+              <div className='w-full mt-4'>
+                {categoryTypes.map((type, index) => (
+                  <div  key={index} className='w-[220px] mx-auto my-3' >
+                    <label style={{display: 'flex', alignItems: 'center', marginBottom: '10px'}}>
+                      <input
+                        type="radio"
+                        name="category"
+                        value={type.value}
+                        checked={selected === type.value}
+                        onChange={() => setSelected(type.value)}
+                        style={{marginRight: '10px'}} // Add space between radio button and label
+                      />
+                      <span style={{fontSize: '20px'}}>{type.label}</span> {/* Increase text size */}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <div className='w-full pb-4 flex'>
+                <div className='flex mx-auto space-x-3'>
+                  <button 
+                    className='bg-[#1565C0] py-1 w-[100px] rounded-lg'
+                    onClick={()=>{
+                      setDateValue(value)
+                      setDateModalShow(false)
+                      setModalShow(false)
+                    }}
+                  >
+                    <p className='text-white'>
+                      Okay
+                    </p>
+                  </button>
+                  <button 
+                    className='bg-red-600 py-1 w-[100px] rounded-lg'
+                    onClick={()=>{
+                      setDateModalShow(false)
+                      setModalShow(false)
+                    }}
+                  >
+                    <p className='text-white'>
+                      Cancel
+                    </p>      
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </>
       )}
       <div className='w-full absolute left-0 right-0 z-100 z-50'>
         <Header />
       </div>
-      <div className = "w-full flex relative mt-[80px] h-[calc(100%-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
+      <div className = "w-full flex relative  mt-[80px] h-[calc(100%-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
         <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
           <MapContainer
             center={center}
             zoom={zoom}
             scrollWheelZoom={true}
             attributionControl={false}
-            // style={{position: 'fixed', width: 735, height: 500}}
             className='w-full h-full relative -z-10'>
             <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>             
           </MapContainer>
           <div 
             ref={ref} 
@@ -148,26 +211,14 @@ function Landingpage() {
                 <div className='w-full flex'>
                   <DatePicker 
                     size='large'
-                    // style={{ width: 200 }}
+                    style={{ width: '100%' }}
                   />
                 </div>
                 <div className='w-full'>
                   <Dropdown />
                 </div>
-                
               </div>
             </div>
-            {/* <div className='w-full md:w-auto flex'>
-              <div className='w-auto flex items-center ml-auto'>
-                <Switch 
-                  color='green'
-                  defaultChecked
-                />
-                <p className='text-black text-sm lg:text-lg text-right ml-2 '>
-                  Save Search
-                </p>
-              </div>
-            </div> */}
           </div>
           <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
             <div className="w-full">
@@ -203,7 +254,6 @@ function Landingpage() {
             <div className='w-full flex'>
               <Input 
                 placeholder="Search by Address"
-                // onSearch={onSearch}
                 style={{
                   height: 40,
                   fontSize: 17
@@ -212,7 +262,10 @@ function Landingpage() {
               />
             </div>
             <div className='w-full flex'>
-              <Dropdown/>
+              <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
+                {selected ? <p className='h-10 text-black content-center'>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800 content-center'>Categories</p>}
+                <p className='h-10 text-black content-center'></p>
+              </div>
               <div className='w-full'>
                 <DatePicker 
                   size='large'
@@ -262,5 +315,4 @@ function Landingpage() {
     </>
   )
 }
-
 export default Landingpage;
