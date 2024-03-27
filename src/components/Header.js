@@ -57,10 +57,10 @@ export default function Header() {
             className="p-1 font-medium ">
             
             <Link
-            
               onClick={() => setOpenNav(false)}
-              to={link.link}>
-              <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all after:h-[1px]">{link.name}</p>
+              to={link.link}
+            >
+              <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all duration-300 after:h-[1px] ">{link.name}</p>
             </Link>
           </Typography>
         ))}
@@ -73,7 +73,7 @@ export default function Header() {
         <div className="flex w-full">
         <img src={logo} className="w-8 h-8 mr-6 mt-1"/>
         <div className="flex w-full sm:flex-row-reverse items-center justify-between text-blue-gray-900">                    
-          <div className="flex invisible sm:visible" onClick={onToggle}>
+          <div className="flex invisible md:visible cursor-pointer" onClick={onToggle}>
             <div className="mr-2 my-auto">
               <img src={userData.img} className="my-auto rounded-full w-[60px]"/>
             </div>
@@ -85,11 +85,11 @@ export default function Header() {
               <p className="zmdi zmdi-caret-down text-black text-xl"></p>
             </div>
           </div>
-            <div className={`${status ? "" : "hidden"} w-[180px] px-8 absolute top-16 mr-4 bg-gray-600 opacity-90 rounded-lg cursor-pointer z-100`}>
+            <div className={`${status ? "" : "hidden"} w-[180px] px-8 absolute top-16 mr-4 rounded-sm cursor-pointer z-100 bg-gray-600 opacity-90 `}>
               {usermenu.map((menu, index)=> (
-                <div key={index} className='flex content-center' onClick={onSelect(menu.id)}>
-                <p className='text-white text-[18px] w-full text-left'>{menu.name}</p>
-                <p className={`text-white text-[18px] pt-1 text-left ${menu.icon}`} />
+                <div key={index} className='flex content-center w-full h-[30px]' onClick={onSelect(menu.id)}>
+                  <p className='text-white text-[18px] w-full text-left'>{menu.name}</p>
+                  <p className={`text-white text-[18px] pt-1 text-left ${menu.icon}`} />
                 </div>
               ))}
             </div>

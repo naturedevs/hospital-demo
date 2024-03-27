@@ -98,145 +98,79 @@ function Landingpage() {
           </div>  
         </>
       )}
-      <div className=''>
-        <div className='w-full absolute left-0 right-0 top-0 z-100 z-50'>
-          <Header />
-        </div>
-        <div className = "w-full mt-[80px] flex relative h-[calc(100vh-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
-          <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
-            <MapContainer
-              center={center}
-              zoom={zoom}
-              scrollWheelZoom={true}
-              attributionControl={false}
-              // style={{position: 'fixed', width: 735, height: 500}}
-              className='w-full h-full relative -z-10'>
-              <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
-            </MapContainer>
-            <div 
-              ref={ref} 
-              id='bar' 
-              style={{ top: searchbarHeight}} 
-              className='absolute bottom-[20px] md:invisible bg-white left-0 right-0 w-full cursor-move rounded-t-lg border-t-[2px] border-gray-700'
-            >
-              <div className='w-full h-[2px] visible pt-3 sm:hidden'/>
-                <div className='w-full flex'>
-                <div className='m-auto w-[32px] pt-1 h-2'>
-                  <div className='w-full h-[2px] bg-black my-[2px]'/>
-                  <div className='w-full h-[2px] bg-black my-[2px]'/>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full">
-            <div 
-              className="w-full px-5 h-0 md:h-auto lg:flex md:visible bg-white z-100 space-y-1"
-            >
-              <div className='xl:flex w-full'>
-                <div className='flex'>
-                  <Input 
-                    placeholder="Search by Address"
-                    // onSearch={onSearch}
-                    style={{
-                      height: 40
-                    }}
-                    suffix={<SearchOutlined />}
-                  />  
-                </div>
-                <div className='flex w-full xl:space-x-1 xl:px-2'>
-                  <div className='w-full'>
-                    <DatePicker 
-                      size='large'
-                      style={{ width: 200 }}
-                    />
-                  </div>
-                  <div className='w-full'>
-                    <Dropdown />
-                  </div>
-                  
-                </div>
-              </div>
-              {/* <div className='w-full md:w-auto flex'>
-                <div className='w-auto flex items-center ml-auto'>
-                  <Switch 
-                    color='green'
-                    defaultChecked
-                  />
-                  <p className='text-black text-sm lg:text-lg text-right ml-2 '>
-                    Save Search
-                  </p>
-                </div>
-              </div> */}
-            </div>
-            <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
-              <div className="w-full">
-                {people.map((item, index) => (
-                  <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
-                    <div className='w-full sm:w-auto justify-center content-center flex sm:static'>
-                      <img src={item.img} className="object-cover w-36 rounded-full sm:rounded-xl mb-5 sm:mb-auto sm:mx-auto"/>
-                    </div>
-                    <div className="px-6 overflow-hidden w-full">
-                      <div className="flex w-full">
-                        <p className="w-full text-black text-left text-sm md:text-xl">{"$"+item.price+"/month"}</p>
-                        <p className="text-right text-black text-sm md:text-xl zmdi zmdi-favorite-outline" />
-                      </div>
-                      <div className="w-full">
-                        <p className="w-full text-black text-left text-xs lg:text-lg">{item.name}</p>
-                        <p className="w-full pb-3 text-gray-500 text-sm md:text-md overflow-hidden">{truncateText(item.brief, 100)}</p>
-                        <div className="w-full justify-end h-[1px] bg-gray-500 my-1"/>
-                        <p className="w-full text-gray-500 text-left text-xs md:text-md">{item.title1+" | "+item.title12+" | "+" 9791 sqft"}</p>            
-                      </div>   
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <div className='w-full absolute left-0 right-0 z-100 z-50'>
+        <Header />
+      </div>
+      <div className = "w-full flex relative mt-[80px] h-[calc(100%-80px)] lg:space-x-5  px-4 z-0 overflow-hidden" >
+        <div  className={`mapContainerDiv w-full overflow-hidden md:h-full rounded-lg top-0 md:top-auto absolute bottom-0 left-0 md:left-auto right-0 md:right-auto md:relative z-10`}>
+          <MapContainer
+            center={center}
+            zoom={zoom}
+            scrollWheelZoom={true}
+            attributionControl={false}
+            // style={{position: 'fixed', width: 735, height: 500}}
+            className='w-full h-full relative -z-10'>
+            <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>              
+          </MapContainer>
           <div 
-            className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
-            style={{ top: `${yPosition}px` }}
+            ref={ref} 
+            id='bar' 
+            style={{ top: searchbarHeight}} 
+            className='absolute bottom-[20px] md:invisible bg-white left-0 right-0 w-full cursor-move rounded-t-lg border-t-[2px] border-gray-700'
           >
-            <div 
-              className="w-full px-3 justify-between visible md:invisible mt-2 space-y-2"
-            >  
+            <div className='w-full h-[2px] visible pt-3 sm:hidden'/>
               <div className='w-full flex'>
+              <div className='m-auto w-[32px] pt-1 h-2'>
+                <div className='w-full h-[2px] bg-black my-[2px]'/>
+                <div className='w-full h-[2px] bg-black my-[2px]'/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full">
+          <div 
+            className="w-full px-5 h-0 md:h-auto lg:flex md:visible bg-white z-100 space-y-1"
+          >
+            <div className='xl:flex w-full'>
+              <div className='flex'>
                 <Input 
                   placeholder="Search by Address"
                   // onSearch={onSearch}
                   style={{
-                    height: 40,
-                    fontSize: 17
+                    height: 40
                   }}
                   suffix={<SearchOutlined />}
-                />
+                />  
               </div>
-              <div className='w-full flex'>
-                <Dropdown/>
-                <div className='w-full'>
+              <div className='flex w-full xl:space-x-1 xl:px-2'>
+                <div className='w-full flex'>
                   <DatePicker 
                     size='large'
-                    style={{ width: "100%" }}
-                    rules={[{ required: true, message: 'Please select a date!' }]}
+                    // style={{ width: 200 }}
                   />
                 </div>
-              </div>
-              {/* <div className='w-full flex'>
-                <div className=' flex items-center mx-auto'>
-                  <div className='pl-2'>
-                    <Switch 
-                      color='green'
-                      defaultChecked
-                    />
-                  </div>
-                  <p className='text-black text-sm ml-2 text-right pt-[px]'>
-                    Save Search
-                  </p>
+                <div className='w-full'>
+                  <Dropdown />
                 </div>
-              </div> */}
+                
+              </div>
             </div>
-            <div className="w-full ">
+            {/* <div className='w-full md:w-auto flex'>
+              <div className='w-auto flex items-center ml-auto'>
+                <Switch 
+                  color='green'
+                  defaultChecked
+                />
+                <p className='text-black text-sm lg:text-lg text-right ml-2 '>
+                  Save Search
+                </p>
+              </div>
+            </div> */}
+          </div>
+          <div className={`bg-white w-full invisible sm:visible md:h-full rounded-xl sm:static right-0 pl-5 z-20 overflow-y-auto pb-10 md:pr-0`}>
+            <div className="w-full">
               {people.map((item, index) => (
                 <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
                   <div className='w-full sm:w-auto justify-center content-center flex sm:static'>
@@ -248,7 +182,6 @@ function Landingpage() {
                       <p className="text-right text-black text-sm md:text-xl zmdi zmdi-favorite-outline" />
                     </div>
                     <div className="w-full">
-                      
                       <p className="w-full text-black text-left text-xs lg:text-lg">{item.name}</p>
                       <p className="w-full pb-3 text-gray-500 text-sm md:text-md overflow-hidden">{truncateText(item.brief, 100)}</p>
                       <div className="w-full justify-end h-[1px] bg-gray-500 my-1"/>
@@ -260,8 +193,72 @@ function Landingpage() {
             </div>
           </div>
         </div>
+        <div 
+          className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
+          style={{ top: `${yPosition}px` }}
+        >
+          <div 
+            className="w-full px-3 justify-between visible md:invisible mt-2 space-y-2"
+          >  
+            <div className='w-full flex'>
+              <Input 
+                placeholder="Search by Address"
+                // onSearch={onSearch}
+                style={{
+                  height: 40,
+                  fontSize: 17
+                }}
+                suffix={<SearchOutlined />}
+              />
+            </div>
+            <div className='w-full flex'>
+              <Dropdown/>
+              <div className='w-full'>
+                <DatePicker 
+                  size='large'
+                  style={{ width: "100%" }}
+                  rules={[{ required: true, message: 'Please select a date!' }]}
+                />
+              </div>
+            </div>
+            {/* <div className='w-full flex'>
+              <div className=' flex items-center mx-auto'>
+                <div className='pl-2'>
+                  <Switch 
+                    color='green'
+                    defaultChecked
+                  />
+                </div>
+                <p className='text-black text-sm ml-2 text-right pt-[px]'>
+                  Save Search
+                </p>
+              </div>
+            </div> */}
+          </div>
+          <div className="w-full ">
+            {people.map((item, index) => (
+              <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
+                <div className='w-full sm:w-auto justify-center content-center flex sm:static'>
+                  <img src={item.img} className="object-cover w-36 rounded-full sm:rounded-xl mb-5 sm:mb-auto sm:mx-auto"/>
+                </div>
+                <div className="px-6 overflow-hidden w-full">
+                  <div className="flex w-full">
+                    <p className="w-full text-black text-left text-sm md:text-xl">{"$"+item.price+"/month"}</p>
+                    <p className="text-right text-black text-sm md:text-xl zmdi zmdi-favorite-outline" />
+                  </div>
+                  <div className="w-full">
+                    
+                    <p className="w-full text-black text-left text-xs lg:text-lg">{item.name}</p>
+                    <p className="w-full pb-3 text-gray-500 text-sm md:text-md overflow-hidden">{truncateText(item.brief, 100)}</p>
+                    <div className="w-full justify-end h-[1px] bg-gray-500 my-1"/>
+                    <p className="w-full text-gray-500 text-left text-xs md:text-md">{item.title1+" | "+item.title12+" | "+" 9791 sqft"}</p>            
+                  </div>   
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      
     </>
   )
 }

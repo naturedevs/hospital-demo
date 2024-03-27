@@ -6,7 +6,7 @@ function Dropdown (props) {
   const onToggle = (e)  => {
     setStatus(!status);
   }
-  const onSelect = (e) => () => {
+  const onSelect = (e)  => {
     console.log(e)
     setActive(e)
     setStatus(false);
@@ -23,7 +23,7 @@ function Dropdown (props) {
     <>
       <div className='w-full'>
         <div className="flex cursor-pointer" onMouseUp={onToggle}>
-          <div className="mr-2 my-auto h-[40px] pt-1 w-full px-6 border-gray-300 border-[1px] rounded-md flex">
+          <div className="mr-2 my-auto h-[40px] pt-1 min-w-[120px] w-full px-6 border-gray-300 border-[1px] rounded-md flex">
             <p className='w-full text-[18px]'>{types[active]["value"]}</p>
             <p className={`pt-1 zmdi ${status? "zmdi-caret-up":"zmdi-caret-down"} `}></p>
           </div>
