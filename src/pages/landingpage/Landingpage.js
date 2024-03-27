@@ -17,9 +17,9 @@ function Landingpage() {
   var center = {lat: localStorage.getItem('lati1'), lng: localStorage.getItem('long1')};
   const [yPosition, setYPosition] = useState(350);
   const [zoom, setZoom] = useState(13);
-  const [modalShow, setModalShow] = useState(true)
+  const [modalShow, setModalShow] = useState(false)
   const [dateModalShow, setDateModalShow] = useState(false)
-  const [categoryModalShow, setCategoryModalShow] = useState(true)
+  const [categoryModalShow, setCategoryModalShow] = useState(false)
   const people = data.data
   const ref = useRef(null);
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
