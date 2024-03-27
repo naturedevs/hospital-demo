@@ -25,6 +25,8 @@ function Landingpage() {
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [dateValue, setDateValue] = React.useState(dayjs('2022-04-17'));
 
+  const formattedDate = dateValue.format('YYYY-MM-DD'); // Example format
+
 // check box in mobile modal.
   const [selected, setSelected] = useState(null);
   const categoryTypes = [
@@ -73,7 +75,11 @@ function Landingpage() {
         <>
           <div 
             className='absolute left-0 right-0 -bottom-[100px] top-0 md:hidden z-[100] bg-black opacity-65'
-            onClick={()=> setModalShow(false)}
+            onClick={()=> {
+              setModalShow(false)
+              setDateModalShow(false)
+              setCategoryModalShow(false)
+            }}
           >
           </div>   
           <div className={`absolute left-1 right-1 sm:left-20 sm:right-20 z-[101] top-[200px] md:hidden ${dateModalShow? "" : "hidden"}`}>
@@ -95,7 +101,7 @@ function Landingpage() {
                       </p>
                     </button>
                     <button 
-                      className='bg-red-600 py-1 w-[100px] rounded-lg'
+                      className='bg-red-900 py-1 w-[100px] rounded-lg'
                       onClick={()=>{
                         setDateModalShow(false)
                         setModalShow(false)
@@ -122,7 +128,7 @@ function Landingpage() {
                         name="category"
                         value={type.value}
                         checked={selected === type.value}
-                        onChange={() => setSelected(type.value)}
+                        onChange={() => {setSelected(type.value); setModalShow(false); setCategoryModalShow(false)}}
                         style={{marginRight: '10px'}} // Add space between radio button and label
                       />
                       <span style={{fontSize: '20px'}}>{type.label}</span> {/* Increase text size */}
@@ -131,32 +137,21 @@ function Landingpage() {
                 ))}
               </div>
               <div className='w-full pb-4 flex'>
-                <div className='flex mx-auto space-x-3'>
-                  <button 
-                    className='bg-[#1565C0] py-1 w-[100px] rounded-lg'
-                    onClick={()=>{
-                      setDateValue(value)
-                      setDateModalShow(false)
-                      setModalShow(false)
-                    }}
-                  >
-                    <p className='text-white'>
-                      Okay
-                    </p>
-                  </button>
-                  <button 
-                    className='bg-red-600 py-1 w-[100px] rounded-lg'
-                    onClick={()=>{
-                      setDateModalShow(false)
-                      setModalShow(false)
-                    }}
-                  >
-                    <p className='text-white'>
-                      Cancel
-                    </p>      
-                  </button>
+                  <div className='flex mx-auto space-x-3'>
+                    <button 
+                      className='bg-red-900 py-1 w-[100px] rounded-lg'
+                      onClick={()=>{
+                        setCategoryModalShow(false)
+                        setModalShow(false)
+                      }}
+                    >
+                      <p className='text-white'>
+                        Cancel
+                      </p>      
+                    </button>
+                  </div>
+                  <button></button>
                 </div>
-              </div>
             </div>
           </div>
 
@@ -264,14 +259,11 @@ function Landingpage() {
             <div className='w-full flex'>
               <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
                 {selected ? <p className='h-10 text-black content-center'>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800 content-center'>Categories</p>}
-                <p className='h-10 text-black content-center'></p>
+                <p className='h-10 text-black content-center zmdi zmdi-caret-down'></p>
               </div>
-              <div className='w-full'>
-                <DatePicker 
-                  size='large'
-                  style={{ width: "100%" }}
-                  rules={[{ required: true, message: 'Please select a date!' }]}
-                />
+              <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setDateModalShow(true);}}>
+                <p className='h-10 text-black content-center'>{formattedDate}</p>
+                <p className='h-10 text-black content-center zmdi zmdi-calendar-note'></p>
               </div>
             </div>
             {/* <div className='w-full flex'>
@@ -288,7 +280,7 @@ function Landingpage() {
               </div>
             </div> */}
           </div>
-          <div className="w-full ">
+          <div className="w-full">
             {people.map((item, index) => (
               <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
                 <div className='w-full sm:w-auto justify-center content-center flex sm:static'>
