@@ -44,7 +44,6 @@ function Landingpage() {
       return () => element.removeEventListener('touchstart', onTouchStart);
     }
   }, [yPosition]);
-  // var startDivY = 0
   const touchstart = (e) => {
     setStartDivY(e.touches[0].clientY - yPosition)
   }
@@ -53,17 +52,11 @@ function Landingpage() {
     const targetDiv = document.getElementById('targetdiv');
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
-      //  console.log(rect.top); // This logs the top position of the targetDiv relative to the viewport
-       console.log(yPosition)
-       console.log(startDivY)
-      // console.log(e.touches[0].clientY)
       if(rect.top > yPosition-18){
         const newY = e.touches[0].clientY - startDivY;
-        console.log(newY)
         if(newY > 18 && newY < screen.height-260) 
         setYPosition(newY);
       }
-      // setStartDivY(e.touches[0].clientY - yPosition)
     }
   }
 
@@ -281,7 +274,7 @@ function Landingpage() {
                 suffix={<SearchOutlined />}
               />
             </div>
-            <div className='w-full flex'>
+            <div className='w-full flex space-x-2'>
               <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
                 {selected ? <p className='h-10 text-black pt-2'>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800 pt-2'>Categories</p>}
                 <p className='h-10 text-black pt-3 zmdi zmdi-caret-down'></p>
