@@ -60,7 +60,7 @@ function Landingpage() {
       if(rect.top > yPosition-18){
         const newY = e.touches[0].clientY - startDivY;
         console.log(newY)
-        if(newY > 18 && newY < screen.height-100) 
+        if(newY > 18 && newY < screen.height-260) 
         setYPosition(newY);
       }
       // setStartDivY(e.touches[0].clientY - yPosition)
