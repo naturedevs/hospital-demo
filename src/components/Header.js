@@ -47,7 +47,7 @@ export default function Header() {
   function NavList() {
     return (
       <ul
-        className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6 bg-gray-200 sm:bg-white">
+        className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6 bg-white sm:bg-white rounded-b-lg">
         {links.map((link, index) => (
           <Typography
             as="li"
@@ -59,8 +59,13 @@ export default function Header() {
             <Link
               onClick={() => setOpenNav(false)}
               to={link.link}
+              style={{ }}
             >
-              <p className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all duration-300 after:h-[1px] ">{link.name}</p>
+              <p 
+                className="text-black font-thin flex flex-col hover-after after:bg-green-600 after:transition-all duration-300 after:h-[1px]  border-b-[1px] md:border-none"
+              >
+                {link.name}
+              </p>
             </Link>
           </Typography>
         ))}
