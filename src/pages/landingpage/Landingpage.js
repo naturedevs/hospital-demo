@@ -49,6 +49,7 @@ function Landingpage() {
     setStartDivY(e.touches[0].clientY - yPosition)
   }
   const touchMove = (e) => {
+
     const targetDiv = document.getElementById('targetdiv');
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
@@ -262,7 +263,7 @@ function Landingpage() {
         </div>
         <div 
           className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
-          style={{ top: `${yPosition}px` }}
+          style={{ top: `${yPosition}px`, overscrollBehavior: 'contain' }}
           id='topDiv'
           onTouchStart= { (e) => touchstart(e)}
           onTouchMove = {(e)=>touchMove(e)}
