@@ -55,12 +55,12 @@ function Landingpage() {
       //  console.log(rect.top); // This logs the top position of the targetDiv relative to the viewport
       //  console.log(yPosition)
       console.log(e.touches[0].clientY)
-      if(rect.top > yPosition-185){
-        const newY = e.touches[0].clientY - yPosition;
+      if(rect.top > yPosition-18){
+        const newY = e.touches[0].clientY - startDivY;
         console.log(newY)
         if(newY > 18 && newY < screen.height-260) setYPosition(newY);
       }
-      // startDivY = e.touches[0].clientY - yPosition
+      startDivY = e.touches[0].clientY - yPosition
     }
   }
 
