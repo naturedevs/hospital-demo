@@ -258,7 +258,7 @@ function Landingpage() {
             </div>
             <div className='w-full flex'>
               <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
-                {selected ? <p className='h-10 text-black' style={{ alignContent: 'center' }}>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800' style={{ alignContent: 'center' }}>Categories</p>}
+                {selected ? <p className='h-10 text-black items-center'>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800 items-center'>Categories</p>}
                 <p className='h-10 text-black zmdi zmdi-caret-down' style={{ alignContent: 'center' }}></p>
               </div>
               <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setDateModalShow(true);}}>
