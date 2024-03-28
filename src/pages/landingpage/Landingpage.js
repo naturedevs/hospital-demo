@@ -24,8 +24,8 @@ function Landingpage() {
   const ref = useRef(null);
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [dateValue, setDateValue] = React.useState(dayjs('2022-04-17'));
-  const [touchStartPostion, setTouchStartPostion] = useState(null)
   const formattedDate = dateValue.format('YYYY-MM-DD'); // Example format
+  const [startDivY, setStartDivY] = useState(0)
 
 // check box in mobile modal.
   const [selected, setSelected] = useState(null);
@@ -44,23 +44,25 @@ function Landingpage() {
       return () => element.removeEventListener('touchstart', onTouchStart);
     }
   }, [yPosition]);
-  let startDivY = null
+  // var startDivY = 0
   const touchstart = (e) => {
-    startDivY = e.touches[0].clientY - yPosition
+    setStartDivY(e.touches[0].clientY - yPosition)
   }
   const touchMove = (e) => {
     const targetDiv = document.getElementById('targetdiv');
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
       //  console.log(rect.top); // This logs the top position of the targetDiv relative to the viewport
-      //  console.log(yPosition)
-      console.log(e.touches[0].clientY)
+       console.log(yPosition)
+       console.log(startDivY)
+      // console.log(e.touches[0].clientY)
       if(rect.top > yPosition-18){
         const newY = e.touches[0].clientY - startDivY;
         console.log(newY)
-        if(newY > 18 && newY < screen.height-260) setYPosition(newY);
+        if(newY > 18 && newY < screen.height-260) 
+        setYPosition(newY);
       }
-      startDivY = e.touches[0].clientY - yPosition
+      // setStartDivY(e.touches[0].clientY - yPosition)
     }
   }
 
