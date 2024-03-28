@@ -24,7 +24,7 @@ function Landingpage() {
   const ref = useRef(null);
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [dateValue, setDateValue] = React.useState(dayjs('2022-04-17'));
-
+  const [touchStartPostion, setTouchStartPostion] = useState(null)
   const formattedDate = dateValue.format('YYYY-MM-DD'); // Example format
 
 // check box in mobile modal.
@@ -44,11 +44,28 @@ function Landingpage() {
       return () => element.removeEventListener('touchstart', onTouchStart);
     }
   }, [yPosition]);
+  let startDivY = null
+  const touchstart = (e) => {
+    startDivY = e.touches[0].clientY - yPosition
+  }
+  const touchMove = (e) => {
+    const targetDiv = document.getElementById('targetdiv');
+    if (targetDiv) {
+      const rect = targetDiv.getBoundingClientRect();
+      //  console.log(rect.top); // This logs the top position of the targetDiv relative to the viewport
+      //  console.log(yPosition)
+      console.log(e.touches[0].clientY)
+      if(rect.top > yPosition-185){
+        const newY = e.touches[0].clientY - startDivY;
+        console.log(newY)
+        if(newY > 18 && newY < screen.height-260) setYPosition(newY);
+      }
+    }
+  }
 
   const onTouchStart = (event) => {
     event.preventDefault();
     const startY = event.touches[0].clientY - yPosition;
-
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
       if(newY > 18 && newY < screen.height-260) setYPosition(newY);
@@ -63,8 +80,9 @@ function Landingpage() {
     document.addEventListener('touchend', onTouchEnd);
  };
  
-  const searchbarHeight = `${yPosition-20}px`
+  const searchbarHeight = `${yPosition-30}px`
 
+  
   function truncateText(text, maxLength) {
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   }
@@ -242,6 +260,9 @@ function Landingpage() {
         <div 
           className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
           style={{ top: `${yPosition}px` }}
+          id='topDiv'
+          onTouchStart= { (e) => touchstart(e)}
+          onTouchMove = {(e)=>touchMove(e)}
         >
           <div 
             className="w-full px-3 justify-between visible md:invisible mt-2 space-y-2"
@@ -280,7 +301,7 @@ function Landingpage() {
               </div>
             </div> */}
           </div>
-          <div className="w-full">
+          <div className="w-full"  id='targetdiv'>
             {people.map((item, index) => (
               <div key={index} className="shadow-xl p-4 sm:flex sm:h-40 rounded-xl border-[1px] my-2 mr-3">
                 <div className='w-full sm:w-auto justify-center content-center flex sm:static'>
