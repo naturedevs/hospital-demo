@@ -47,7 +47,7 @@ export default function Header() {
   function NavList() {
     return (
       <ul
-        className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6">
+        className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 sm:flex-row lg:items-center lg:gap-6 bg-gray-200 sm:bg-white">
         {links.map((link, index) => (
           <Typography
             as="li"
@@ -94,7 +94,7 @@ export default function Header() {
               ))}
             </div>
             <div className="sm:flex">
-              <div className="hidden sm:block">
+              <div className="hidden sm:block ">
                 <NavList/>
               </div>
               <IconButton

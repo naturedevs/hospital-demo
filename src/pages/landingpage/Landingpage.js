@@ -56,10 +56,11 @@ function Landingpage() {
       //  console.log(yPosition)
       console.log(e.touches[0].clientY)
       if(rect.top > yPosition-185){
-        const newY = e.touches[0].clientY - startDivY;
+        const newY = e.touches[0].clientY - yPosition;
         console.log(newY)
         if(newY > 18 && newY < screen.height-260) setYPosition(newY);
       }
+      // startDivY = e.touches[0].clientY - yPosition
     }
   }
 
