@@ -26,7 +26,7 @@ function Landingpage() {
   const [dateValue, setDateValue] = React.useState(dayjs('2022-04-17'));
   const formattedDate = dateValue.format('YYYY-MM-DD'); // Example format
   const [startDivY, setStartDivY] = useState(0)
-
+  const [scrollable, setScrollable] = useState(false)
 // check box in mobile modal.
   const [selected, setSelected] = useState(null);
   const categoryTypes = [
@@ -50,11 +50,16 @@ function Landingpage() {
   const touchMove = (e) => {
 
     const targetDiv = document.getElementById('targetdiv');
+    if(yPosition > 20 && yPosition < 26){
+      setScrollable(true)
+    }else setScrollable(false)
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
-      if(rect.top > yPosition-18){
+      console.log(rect.top)
+      console.log(yPosition)
+      if(rect.top > yPosition-21){
         const newY = e.touches[0].clientY - startDivY;
-        if(newY > 18 && newY < screen.height-260) 
+        if(newY > 20 && newY < screen.height-260) 
         setYPosition(newY);
       }
     }
@@ -65,7 +70,7 @@ function Landingpage() {
     const startY = event.touches[0].clientY - yPosition;
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
-      if(newY > 18 && newY < screen.height-260) setYPosition(newY);
+      if(newY > 20 && newY < screen.height-260) setYPosition(newY);
 
     };
 
@@ -255,7 +260,7 @@ function Landingpage() {
           </div>
         </div>
         <div 
-          className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 overflow-y-auto px-3 `} 
+          className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 ${scrollable? "overflow-y-auto": "" } px-3 `} 
           style={{ top: `${yPosition}px`, overscrollBehavior: 'contain' }}
           id='topDiv'
           onTouchStart= { (e) => touchstart(e)}
@@ -275,13 +280,25 @@ function Landingpage() {
               />
             </div>
             <div className='w-full flex space-x-2'>
-              <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
+              {/* <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setCategoryModalShow(true);}}>
                 {selected ? <p className='h-10 text-black pt-2'>{categoryTypes.find(type => type.value === selected).label}</p> : <p className='h-10 text-gray-800 pt-2'>Categories</p>}
                 <p className='h-10 text-black pt-3 zmdi zmdi-caret-down'></p>
               </div>
               <div className='w-full flex justify-between cursor-pointer border-[1px] rounded-lg px-2 border-gray-300' onClick={() => {setModalShow(true); setDateModalShow(true);}}>
                 <p className='h-10 text-black pt-2'>{formattedDate}</p>
                 <p className='h-10 text-black pt-3 zmdi zmdi-calendar-note'></p>
+              </div> */}
+              <div className='flex w-full xl:space-x-1 xl:px-2'>
+                
+                <div className='w-full'>
+                  <Dropdown />
+                </div>
+                <div className='w-full flex'>
+                  <DatePicker 
+                    size='large'
+                    style={{ width: '100%' }}
+                  />
+                </div>
               </div>
             </div>
             {/* <div className='w-full flex'>
