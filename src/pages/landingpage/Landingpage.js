@@ -52,14 +52,14 @@ function Landingpage() {
     const targetDiv = document.getElementById('targetdiv');
     if(yPosition > 20 && yPosition < 26){
       setScrollable(true)
-    }else setScrollable(false)
+    }else {setScrollable(false)}
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
       console.log(rect.top)
       console.log(yPosition)
       if(rect.top > yPosition-21){
         const newY = e.touches[0].clientY - startDivY;
-        if(newY > 20 && newY < screen.height-260) 
+        if(newY > 20 && newY < screen.height-160) 
         setYPosition(newY);
       }
     }
@@ -70,8 +70,8 @@ function Landingpage() {
     const startY = event.touches[0].clientY - yPosition;
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
-      if(newY > 20 && newY < screen.height-260) setYPosition(newY);
-
+      if(newY > 20 && newY < screen.height-160) setYPosition(newY);
+      // else if (newY <25) setYPosition(22)
     };
 
     const onTouchEnd = () => {
