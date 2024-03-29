@@ -47,30 +47,42 @@ function Landingpage() {
   const touchstart = (e) => {
     setStartDivY(e.touches[0].clientY - yPosition)
   }
-  const touchMove = (e) => {
+  let lastScrollTime = 0;
 
+  const touchMove = (e) => {
+    
+    const now = Date.now();
+    if (now - lastScrollTime < 20) { // Adjust the time interval as needed for smoother movement
+      return; // Skip the event handling if it's too soon after the last one
+    }
+    
+    lastScrollTime = now;
+  
     const targetDiv = document.getElementById('targetdiv');
-    if(yPosition > 20 && yPosition < 26){
-      setScrollable(true)
-    }else {setScrollable(false)}
+    if (yPosition > 20 && yPosition < 26) {
+      setScrollable(true);
+    } else {
+      setScrollable(false);
+    }
     if (targetDiv) {
       const rect = targetDiv.getBoundingClientRect();
-      console.log(rect.top)
-      console.log(yPosition)
-      if(rect.top > yPosition-21){
+      console.log(rect.top);
+      console.log(yPosition);
+      if (rect.top > yPosition - 21) {
         const newY = e.touches[0].clientY - startDivY;
-        if(newY > 20 && newY < screen.height-160) 
-        setYPosition(newY);
+        if (newY > 20 && newY < screen.height - 260) {
+          setYPosition(newY);
+        }
       }
     }
-  }
+  };
 
   const onTouchStart = (event) => {
     event.preventDefault();
     const startY = event.touches[0].clientY - yPosition;
     const onTouchMove = (event) => {
       const newY = event.touches[0].clientY - startY;
-      if(newY > 20 && newY < screen.height-160) setYPosition(newY);
+      if(newY > 20 && newY < screen.height-260) setYPosition(newY);
       // else if (newY <25) setYPosition(22)
     };
 
@@ -261,10 +273,14 @@ function Landingpage() {
         </div>
         <div 
           className={`z-50 absolute visible md:invisible bg-white left-0 right-0 bottom-0 ${scrollable? "overflow-y-auto": "" } px-3 `} 
-          style={{ top: `${yPosition}px`, overscrollBehavior: 'contain' }}
+          style={{ top: `${yPosition}px`, 
+          // overscrollBehavior: 'contain' 
+        }}
           id='topDiv'
           onTouchStart= { (e) => touchstart(e)}
-          onTouchMove = {(e)=>touchMove(e)}
+          onTouchMove = {(e) =>touchMove(e)}
+          // onTouchStartCapture={(e) => { e.preventDefault(); }} 
+          // onTouchMoveCapture={(e) => { e.preventDefault(); }}
         >
           <div 
             className="w-full px-3 justify-between visible md:invisible mt-2 space-y-2"
