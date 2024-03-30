@@ -9,7 +9,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Wrapper>
-        <div className="w-screen bg-[#F4F5F7] absolute ">
+        <div className="w-screen bg-[#F4F5F7] absolute " style={{ overscrollBehavior: 'contain' }}>
           <div className="max-w-[1600px] mx-auto md:rounded-2xl bg-white h-[100svh] inset-0 shadow-xl  overflow-x-hidden overflow-y-hidden relative">
               <Routes>
                 <Route path="/buy" exact element= {<Landingpage />}/>
